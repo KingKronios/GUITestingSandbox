@@ -7,10 +7,10 @@ public class MainFrame extends JFrame{
     
     MainFrame() {
         
-        super("Program");
+        super("Stat Calculator");
         MainPanel mPanel = new MainPanel();
         getContentPane().add(mPanel);
-        setSize(750, 350);
+        setSize(1000, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         

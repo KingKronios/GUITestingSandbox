@@ -8,30 +8,45 @@ import java.awt.event.ActionListener;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.JTextField;
 
 public class MainPanel extends JPanel{
     
-    double offStat1Base = 54.88;
-    double offStat1Growth = 3.5;
-    double offStat2Base = 54.88;
-    double offStat2Growth = 3.5;
-    double offStat3Base = 54.88;
-    double offStat3Growth = 3.5;
-    double offStat4Base = 54.88;
-    double offStat4Growth = 3.5;
-    double offStat5Base = 54.88;
-    double offStat5Growth = 3.5;
-    double offStat6Base = 54.88;
-    double offStat6Growth = 3.5;
+    final int LEVEL_MIN = 1;
+    final int LEVEL_MAX = 18;
+    final int LEVEL_DEFAULT = 1;
+    
+    String[] championList = {"Choose a champion", 
+                             "Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "Aurelion Sol", "Azir", 
+                             "Bard", "Blitzcrank", "Brand", "Braum", 
+                             "Caitlyn", "Cassiopeia", "Cho'Gath", "Corki", 
+                             "Darius", "Diana", "Dr. Mundo", "Draven", 
+                             "Ekko", "Elise", "Evelynn", "Ezreal", 
+                             "Fiddlesticks", "Fiora", "Fizz", 
+                             "Galio", "Gangplank", "Garen", "Gnar", "Gragas", "Graves", 
+                             "Hecarim", "Heimerdinger", 
+                             "Illaoi", "Irelia", 
+                             "Janna", "Jarvan IV", "Jax", "Jayce", "Jhin", "Jinx", 
+                             "Kalista", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", 
+                             "LeBlanc", "Lee Sin", "Leona", "Lissandra", "Lucian", "Lulu", "Lux", 
+                             "Malphite", "Malzahar", "Maokai", "Master Yi", "Miss Fortune", "Mordekaiser", "Morgana", 
+                             "Nami", "Nasus", "Nautilus", "Nidalee", "Nocturne", "Nunu", 
+                             "Olaf", "Orianna", 
+                             "Pantheon", "Poppy", 
+                             "Quinn", 
+                             "Rammus", "Rek'Sai", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", 
+                             "Sejuani", "Shaco", "Shen", "Shyvanna", "Singed"};
+    String[] itemList = {"Choose an item", "Item 2", "Item 3"};
     
     ChampionStat leblancStat = new ChampionStat("LeBlanc", 
                                                 54.88, 
                                                 3.5, 
                                                 0.625, 
-                                                0.014, 
+                                                0, 
                                                 0, 
                                                 0, 
                                                 0, 
@@ -41,6 +56,8 @@ public class MainPanel extends JPanel{
                                                 0, 
                                                 0, 
 
+                                                0, 
+                                                0, 
                                                 0, 
                                                 0, 
                                                 334, 
@@ -51,17 +68,15 @@ public class MainPanel extends JPanel{
                                                 0, 
                                                 0, 
                                                 0, 
-                                                0, 
-                                                0, 
 
-                                                516, 
-                                                75, 
-                                                7.42, 
-                                                0.55, 
                                                 21.88, 
                                                 3.5, 
                                                 30, 
                                                 0, 
+                                                516, 
+                                                75, 
+                                                7.42, 
+                                                0.55, 
 
                                                 335, 
                                                 0, 
@@ -77,32 +92,31 @@ public class MainPanel extends JPanel{
         
         //JLabel
             JLabel offStatHeadLabel = new JLabel("Offensive Stats");
-            JLabel offStat1Label = new JLabel("AD");
-            JLabel offStat2Label = new JLabel("AS");
-            JLabel offStat3Label = new JLabel("offStat3");
-            JLabel offStat4Label = new JLabel("offStat4");
-            JLabel offStat5Label = new JLabel("offStat5");
-            JLabel offStat6Label = new JLabel("offStat6");
+            JLabel offStat1Label = new JLabel("Attack Damage");
+            JLabel offStat2Label = new JLabel("Attack Speed");
+            JLabel offStat3Label = new JLabel("Crit Strike Chance");
+            JLabel offStat4Label = new JLabel("Crit Strike Damage");
+            JLabel offStat5Label = new JLabel("Life Steal");
+            JLabel offStat6Label = new JLabel("Armor Penetration");
 
             JLabel abilStatHeadLabel = new JLabel("Ability Stats");
-            JLabel abilStat1Label = new JLabel("AP");
-            JLabel abilStat2Label = new JLabel("MP");
-            JLabel abilStat3Label = new JLabel("MP Regen");
-            JLabel abilStat4Label = new JLabel("abilStat4");
-            JLabel abilStat5Label = new JLabel("abilStat5");
-            JLabel abilStat6Label = new JLabel("abilStat6");
+            JLabel abilStat1Label = new JLabel("Ability Power");
+            JLabel abilStat2Label = new JLabel("Cooldown Reduction");
+            JLabel abilStat3Label = new JLabel("Mana");
+            JLabel abilStat4Label = new JLabel("Mana Regen");
+            JLabel abilStat5Label = new JLabel("Spell Vamp");
+            JLabel abilStat6Label = new JLabel("Magic Penetration");
 
             JLabel defStatHeadLabel = new JLabel("Defensive Stats");
-            JLabel defStat1Label = new JLabel("HP");
-            JLabel defStat2Label = new JLabel("HP Regen");
-            JLabel defStat3Label = new JLabel("AR");
-            JLabel defStat4Label = new JLabel("MR");
+            JLabel defStat1Label = new JLabel("Armor");
+            JLabel defStat2Label = new JLabel("Magic Resist");
+            JLabel defStat3Label = new JLabel("Heath");
+            JLabel defStat4Label = new JLabel("Health Regen");
 
             JLabel utilStatHeadLabel = new JLabel("Utility Stats");
-            JLabel utilStat1Label = new JLabel("MS");
-            JLabel utilStat2Label = new JLabel("RG");
-            
-            JLabel levelLabel = new JLabel("Level");
+            JLabel utilStat1Label = new JLabel("Move Speed");
+            JLabel utilStat2Label = new JLabel("Range");
+
             JLabel championLabel = new JLabel("Champion");
         
         //JTextField
@@ -146,23 +160,46 @@ public class MainPanel extends JPanel{
             JTextField utilStat2TextField = new JTextField(5);
             utilStat2TextField.setEditable(false);
             
-            JTextField levelTextField = new JTextField(2);
-            levelTextField.setEditable(true);
-            levelTextField.setText("1");
-            JTextField championTextField = new JTextField(6);
-            championTextField.setEditable(true);
-            championTextField.setText("Champion");
+        //Combo Boxes
+            JComboBox championComboBox = new JComboBox(championList);
+            
+            JComboBox item1ComboBox = new JComboBox(itemList);
+            JComboBox item2ComboBox = new JComboBox(itemList);
+            JComboBox item3ComboBox = new JComboBox(itemList);
+            JComboBox item4ComboBox = new JComboBox(itemList);
+            JComboBox item5ComboBox = new JComboBox(itemList);
+            JComboBox item6ComboBox = new JComboBox(itemList);
+            
+        //Sliders
+            JSlider levelSlider = new JSlider(LEVEL_MIN, LEVEL_MAX, LEVEL_DEFAULT);
+            levelSlider.setMajorTickSpacing(17);
+            levelSlider.setMinorTickSpacing(1);
+            levelSlider.setPaintTicks(true);
+            levelSlider.setPaintLabels(true);
             
         //Buttons
             JButton calcButton = new JButton("Calculate");
             calcButton.addActionListener(new ActionListener() {
                 @Override
                     public void actionPerformed(ActionEvent event) {
-                       String userInput = "";
+                       double userLevelInput = 1;
                        double level = 1;
-                       userInput = levelTextField.getText();
-                       level = Double.parseDouble(userInput);
-                       offStat1TextField.setText(Double.toString(((level - 1) * offStat1Growth) + offStat1Base));
+                       userLevelInput = levelSlider.getValue();
+                       level = userLevelInput;
+                       
+                       offStat1TextField.setText(Double.toString(((level - 1) * leblancStat.offStat1Growth) + leblancStat.offStat1Base));
+                       
+                       abilStat3TextField.setText(Double.toString(((level - 1) * leblancStat.abilStat3Growth) + leblancStat.abilStat3Base));
+                       abilStat4TextField.setText(Double.toString(((level - 1) * leblancStat.abilStat4Growth) + leblancStat.abilStat4Base));
+                       
+                       defStat1TextField.setText(Double.toString(((level - 1) * leblancStat.defStat1Growth) + leblancStat.defStat1Base));
+                       defStat2TextField.setText(Double.toString(((level - 1) * leblancStat.defStat2Growth) + leblancStat.defStat2Base));
+                       defStat3TextField.setText(Double.toString(((level - 1) * leblancStat.defStat3Growth) + leblancStat.defStat3Base));
+                       defStat4TextField.setText(Double.toString(((level - 1) * leblancStat.defStat4Growth) + leblancStat.defStat4Base));
+                       
+                       utilStat1TextField.setText(Double.toString(((level - 1) * leblancStat.utilStat1Growth) + leblancStat.utilStat1Base));
+                       utilStat2TextField.setText(Double.toString(((level - 1) * leblancStat.utilStat2Growth) + leblancStat.utilStat2Base));
+                       
                     }
             });
             
@@ -172,25 +209,25 @@ public class MainPanel extends JPanel{
         
         //Headers
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 0;
+            layoutConst.gridx = 1;
             layoutConst.gridy = 0;
             layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStatHeadLabel, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 2;
+            layoutConst.gridx = 3;
             layoutConst.gridy = 0;
             layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStatHeadLabel, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 4;
+            layoutConst.gridx = 5;
             layoutConst.gridy = 0;
             layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStatHeadLabel, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 6;
+            layoutConst.gridx = 7;
             layoutConst.gridy = 0;
             layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
@@ -198,236 +235,257 @@ public class MainPanel extends JPanel{
         
         //Offensive Stats
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 0;
+            layoutConst.gridx = 1;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat1Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 1;
+            layoutConst.gridx = 2;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat1TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 0;
+            layoutConst.gridx = 1;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat2Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 1;
+            layoutConst.gridx = 2;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat2TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 0;
+            layoutConst.gridx = 1;
             layoutConst.gridy = 3;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat3Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 1;
+            layoutConst.gridx = 2;
             layoutConst.gridy = 3;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat3TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 0;
+            layoutConst.gridx = 1;
             layoutConst.gridy = 4;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat4Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 1;
+            layoutConst.gridx = 2;
             layoutConst.gridy = 4;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat4TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 0;
+            layoutConst.gridx = 1;
             layoutConst.gridy = 5;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat5Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 1;
+            layoutConst.gridx = 2;
             layoutConst.gridy = 5;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat5TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 0;
+            layoutConst.gridx = 1;
             layoutConst.gridy = 6;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat6Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 1;
+            layoutConst.gridx = 2;
             layoutConst.gridy = 6;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStat6TextField, layoutConst);
             
         //Ability Stats
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 2;
+            layoutConst.gridx = 3;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat1Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 3;
+            layoutConst.gridx = 4;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat1TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 2;
+            layoutConst.gridx = 3;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat2Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 3;
+            layoutConst.gridx = 4;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat2TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 2;
+            layoutConst.gridx = 3;
             layoutConst.gridy = 3;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat3Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 3;
+            layoutConst.gridx = 4;
             layoutConst.gridy = 3;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat3TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 2;
+            layoutConst.gridx = 3;
             layoutConst.gridy = 4;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat4Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 3;
+            layoutConst.gridx = 4;
             layoutConst.gridy = 4;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat4TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 2;
+            layoutConst.gridx = 3;
             layoutConst.gridy = 5;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat5Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 3;
+            layoutConst.gridx = 4;
             layoutConst.gridy = 5;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat5TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 2;
+            layoutConst.gridx = 3;
             layoutConst.gridy = 6;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat6Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 3;
+            layoutConst.gridx = 4;
             layoutConst.gridy = 6;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStat6TextField, layoutConst);
             
         //Defensive Stats
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 4;
+            layoutConst.gridx = 5;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat1Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 5;
+            layoutConst.gridx = 6;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat1TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 4;
+            layoutConst.gridx = 5;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat2Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 5;
+            layoutConst.gridx = 6;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat2TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 4;
+            layoutConst.gridx = 5;
             layoutConst.gridy = 3;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat3Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 5;
+            layoutConst.gridx = 6;
             layoutConst.gridy = 3;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat3TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 4;
+            layoutConst.gridx = 5;
             layoutConst.gridy = 4;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat4Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 5;
+            layoutConst.gridx = 6;
             layoutConst.gridy = 4;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStat4TextField, layoutConst);
             
         //Utility Stats
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 6;
+            layoutConst.gridx = 7;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(utilStat1Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 7;
+            layoutConst.gridx = 8;
             layoutConst.gridy = 1;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(utilStat1TextField, layoutConst);
 
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 6;
+            layoutConst.gridx = 7;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(utilStat2Label, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 7;
+            layoutConst.gridx = 8;
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(utilStat2TextField, layoutConst);
             
         //Champion, Level, Calculate
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 6;
-            layoutConst.gridy = 5;
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 0;
             layoutConst.insets = new Insets(10, 10, 10, 10);
-            add(championLabel, layoutConst);
-            layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 7;
-            layoutConst.gridy = 5;
-            layoutConst.insets = new Insets(10, 10, 10, 10);
-            add(championTextField, layoutConst);
+            add(championComboBox, layoutConst);
             
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 4;
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 1;
+            layoutConst.gridwidth = 1;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(levelSlider, layoutConst);
+
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 2;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(item1ComboBox, layoutConst);
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 3;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(item2ComboBox, layoutConst);
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 4;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(item3ComboBox, layoutConst);
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 5;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(item4ComboBox, layoutConst);
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 0;
             layoutConst.gridy = 6;
             layoutConst.insets = new Insets(10, 10, 10, 10);
-            add(levelLabel, layoutConst);
+            add(item5ComboBox, layoutConst);
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 5;
-            layoutConst.gridy = 6;
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 7;
             layoutConst.insets = new Insets(10, 10, 10, 10);
-            add(levelTextField, layoutConst);
-            
+            add(item6ComboBox, layoutConst);
+
             layoutConst = new GridBagConstraints();
-            layoutConst.gridx = 6;
-            layoutConst.gridy = 6;
-            layoutConst.gridwidth = 2;
+            layoutConst.gridx = 0;
+            layoutConst.gridy = 8;
+            layoutConst.gridheight = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(calcButton, layoutConst);
-            
             
     }
 }
