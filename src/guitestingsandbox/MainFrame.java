@@ -8,7 +8,7 @@ public class MainFrame extends JFrame{
         super("Program");
         MainPanel mPanel = new MainPanel();
         getContentPane().add(mPanel);
-        setSize(500, 400);
+        setSize(750, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
