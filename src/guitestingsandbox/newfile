@@ -1,0 +1,39 @@
+
+package textspitter;
+
+public class TextSpitter {
+
+    public static void main(String[] args) {
+        String prefix1 = "off";
+        String prefix2 = "abil";
+        String prefix3 = "def";
+        String prefix4 = "util";
+        
+        String dataType = "double";
+        String suffix1 = "Base";
+        String suffix2 = "Growth";
+        
+        
+        
+        //offStat1TextField.setText(Double.toString(((level - 1) * offStat1Growth) + offStat1Base));
+        
+//        for(int i = 1; i <= 6; i++) {
+//            System.out.println("this." + prefix1 + "Stat" + i + suffix1 + " = " + prefix1 + "Stat" + i + suffix1 + ";");
+//            System.out.println("this." + prefix1 + "Stat" + i + suffix2 + " = " + prefix1 + "Stat" + i + suffix2 + ";");
+//        }
+        
+        for(int i = 1; i <= 6; i++) {
+            System.out.println(prefix1 + "Stat" + i + "TextField.setText(Double.toString(((level - 1) * " + prefix1 + "Stat" + i + suffix2 + ") + " + prefix1 + "Stat" + i + suffix1 + "));");
+        }
+        for(int i = 1; i <= 6; i++) {
+            System.out.println(prefix2 + "StatArrayList.add();");
+        }
+        for(int i = 1; i <= 4; i++) {
+            System.out.println(prefix3 + "StatArrayList.add();");
+        }
+        for(int i = 1; i <= 2; i++) {
+            System.out.println(prefix4 + "StatArrayList.add();");
+        }
+    }
+    
+}
