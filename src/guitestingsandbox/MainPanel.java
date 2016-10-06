@@ -92,21 +92,25 @@ public class MainPanel extends JPanel{
             layoutConst = new GridBagConstraints();
             layoutConst.gridx = 0;
             layoutConst.gridy = 0;
+            layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(offStatHeadLabel, layoutConst);
             layoutConst = new GridBagConstraints();
             layoutConst.gridx = 2;
             layoutConst.gridy = 0;
+            layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(abilStatHeadLabel, layoutConst);
             layoutConst = new GridBagConstraints();
             layoutConst.gridx = 4;
             layoutConst.gridy = 0;
+            layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(defStatHeadLabel, layoutConst);
             layoutConst = new GridBagConstraints();
             layoutConst.gridx = 6;
             layoutConst.gridy = 0;
+            layoutConst.gridwidth = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(utilStatHeadLabel, layoutConst);
         
