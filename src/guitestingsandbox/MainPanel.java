@@ -4,13 +4,31 @@ package guitestingsandbox;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
+
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class MainPanel extends JPanel{
+    
+    double offStat1Base = 54.88;
+    double offStat1Growth = 3.5;
+    double offStat2Base = 54.88;
+    double offStat2Growth = 3.5;
+    double offStat3Base = 54.88;
+    double offStat3Growth = 3.5;
+    double offStat4Base = 54.88;
+    double offStat4Growth = 3.5;
+    double offStat5Base = 54.88;
+    double offStat5Growth = 3.5;
+    double offStat6Base = 54.88;
+    double offStat6Growth = 3.5;
+            
     MainPanel() {
+
         JButton xB = new JButton("x");
         JLabel xL = new JLabel("x");
         JTextField xTF = new JTextField(5);
@@ -42,6 +60,9 @@ public class MainPanel extends JPanel{
             JLabel utilStatHeadLabel = new JLabel("Utility Stats");
             JLabel utilStat1Label = new JLabel("utilStat1");
             JLabel utilStat2Label = new JLabel("utilStat2");
+            
+            JLabel levelLabel = new JLabel("Level");
+            JLabel championLabel = new JLabel("Champion");
         
         //JTextField
             JTextField offStat1TextField = new JTextField(5);
@@ -83,10 +104,30 @@ public class MainPanel extends JPanel{
             utilStat1TextField.setEditable(false);
             JTextField utilStat2TextField = new JTextField(5);
             utilStat2TextField.setEditable(false);
-        
-        GridBagConstraints layoutConst = null;
-
-        setLayout(new GridBagLayout());
+            
+            JTextField levelTextField = new JTextField(2);
+            levelTextField.setEditable(true);
+            levelTextField.setText("1");
+            JTextField championTextField = new JTextField(6);
+            championTextField.setEditable(true);
+            championTextField.setText("Champion");
+            
+        //Buttons
+            JButton calcButton = new JButton("Calculate");
+            calcButton.addActionListener(new ActionListener() {
+                @Override
+                    public void actionPerformed(ActionEvent event) {
+                       String userInput = "";
+                       double level = 1;
+                       userInput = levelTextField.getText();
+                       level = Double.parseDouble(userInput);
+                       offStat1TextField.setText(Double.toString(((level - 1) * offStat1Growth) + offStat1Base));
+                    }
+            });
+            
+        //Grid Layout
+            GridBagConstraints layoutConst = null;
+            setLayout(new GridBagLayout());
         
         //Headers
             layoutConst = new GridBagConstraints();
@@ -315,5 +356,37 @@ public class MainPanel extends JPanel{
             layoutConst.gridy = 2;
             layoutConst.insets = new Insets(10, 10, 10, 10);
             add(utilStat2TextField, layoutConst);
+            
+        //Champion, Level, Calculate
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 6;
+            layoutConst.gridy = 5;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(championLabel, layoutConst);
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 7;
+            layoutConst.gridy = 5;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(championTextField, layoutConst);
+            
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 4;
+            layoutConst.gridy = 6;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(levelLabel, layoutConst);
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 5;
+            layoutConst.gridy = 6;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(levelTextField, layoutConst);
+            
+            layoutConst = new GridBagConstraints();
+            layoutConst.gridx = 6;
+            layoutConst.gridy = 6;
+            layoutConst.gridwidth = 2;
+            layoutConst.insets = new Insets(10, 10, 10, 10);
+            add(calcButton, layoutConst);
+            
+            
     }
 }
