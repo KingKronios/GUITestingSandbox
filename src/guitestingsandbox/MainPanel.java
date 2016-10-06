@@ -26,6 +26,47 @@ public class MainPanel extends JPanel{
     double offStat5Growth = 3.5;
     double offStat6Base = 54.88;
     double offStat6Growth = 3.5;
+    
+    ChampionStat leblancStat = new ChampionStat("LeBlanc", 
+                                                54.88, 
+                                                3.5, 
+                                                0.625, 
+                                                0.014, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+
+                                                0, 
+                                                0, 
+                                                334, 
+                                                50, 
+                                                6, 
+                                                0.8, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+                                                0, 
+
+                                                516, 
+                                                75, 
+                                                7.42, 
+                                                0.55, 
+                                                21.88, 
+                                                3.5, 
+                                                30, 
+                                                0, 
+
+                                                335, 
+                                                0, 
+                                                525, 
+                                                0);
             
     MainPanel() {
 
@@ -36,30 +77,30 @@ public class MainPanel extends JPanel{
         
         //JLabel
             JLabel offStatHeadLabel = new JLabel("Offensive Stats");
-            JLabel offStat1Label = new JLabel("offStat1");
-            JLabel offStat2Label = new JLabel("offStat2");
+            JLabel offStat1Label = new JLabel("AD");
+            JLabel offStat2Label = new JLabel("AS");
             JLabel offStat3Label = new JLabel("offStat3");
             JLabel offStat4Label = new JLabel("offStat4");
             JLabel offStat5Label = new JLabel("offStat5");
             JLabel offStat6Label = new JLabel("offStat6");
 
             JLabel abilStatHeadLabel = new JLabel("Ability Stats");
-            JLabel abilStat1Label = new JLabel("abilStat1");
-            JLabel abilStat2Label = new JLabel("abilStat2");
-            JLabel abilStat3Label = new JLabel("abilStat3");
+            JLabel abilStat1Label = new JLabel("AP");
+            JLabel abilStat2Label = new JLabel("MP");
+            JLabel abilStat3Label = new JLabel("MP Regen");
             JLabel abilStat4Label = new JLabel("abilStat4");
             JLabel abilStat5Label = new JLabel("abilStat5");
             JLabel abilStat6Label = new JLabel("abilStat6");
 
             JLabel defStatHeadLabel = new JLabel("Defensive Stats");
-            JLabel defStat1Label = new JLabel("defStat1");
-            JLabel defStat2Label = new JLabel("defStat2");
-            JLabel defStat3Label = new JLabel("defStat3");
-            JLabel defStat4Label = new JLabel("defStat4");
+            JLabel defStat1Label = new JLabel("HP");
+            JLabel defStat2Label = new JLabel("HP Regen");
+            JLabel defStat3Label = new JLabel("AR");
+            JLabel defStat4Label = new JLabel("MR");
 
             JLabel utilStatHeadLabel = new JLabel("Utility Stats");
-            JLabel utilStat1Label = new JLabel("utilStat1");
-            JLabel utilStat2Label = new JLabel("utilStat2");
+            JLabel utilStat1Label = new JLabel("MS");
+            JLabel utilStat2Label = new JLabel("RG");
             
             JLabel levelLabel = new JLabel("Level");
             JLabel championLabel = new JLabel("Champion");
