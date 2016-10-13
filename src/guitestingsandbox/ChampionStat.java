@@ -47,29 +47,6 @@ public class ChampionStat {
     double utilStat2Base;
     double utilStat2Growth;
     
-//    ArrayList<Double> offStatArrayList = new ArrayList<>();
-//        offStatArrayList.add(offStat1Base);
-//        offStatArrayList.add();
-//        offStatArrayList.add();
-//        offStatArrayList.add();
-//        offStatArrayList.add();
-//        offStatArrayList.add();
-//    ArrayList<Double> abilStatArrayList = new ArrayList<>();
-//        abilStatArrayList.add();
-//        abilStatArrayList.add();
-//        abilStatArrayList.add();
-//        abilStatArrayList.add();
-//        abilStatArrayList.add();
-//        abilStatArrayList.add();
-//    ArrayList<Double> defStatArrayList = new ArrayList<>();
-//        defStatArrayList.add();
-//        defStatArrayList.add();
-//        defStatArrayList.add();
-//        defStatArrayList.add();
-//    ArrayList<Double> utilStatArrayList = new ArrayList<>();
-//        utilStatArrayList.add();
-//        utilStatArrayList.add();
-
     ChampionStat(String championName, 
                 double offStat1Base, 
                 double offStat1Growth, 
